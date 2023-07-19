@@ -21,4 +21,3 @@ class PostController extends Controller
 	}
 }
 
-// 取得したデータ$post->get()を'posts'という変数名でviewに渡す
