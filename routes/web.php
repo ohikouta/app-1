@@ -14,8 +14,22 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/posts', [PostController::class, 'index']);
+// Route::get('/posts', [PostController::class, 'index']);
+
+// Route::get('/', function() {
+//     return view('posts/index');
+// });
+
+// '/'に対してPostControllerのindexメソッドを返すように！
+Route::get('/', [PostController::class, 'index']);
+
+
+/*
+|ちなみに！
+|アプリを起動して一番最初にブラウザから送られてくるリクエストが'/'(スラッシュ)
+|だからトップページを表示するときの引数に'/'を指定することは言わずもがな
+*/
