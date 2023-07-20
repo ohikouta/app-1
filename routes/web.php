@@ -28,6 +28,10 @@ use App\Http\Controllers\PostController;
 Route::get('/', [PostController::class, 'index']);
 
 
+// 8-3のコードを追加
+// '/posts/{対象のID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
+Route::get('/posts/{post}', [PostController::class, 'show']);
+
 /*
 |ちなみに！
 |アプリを起動して一番最初にブラウザから送られてくるリクエストが'/'(スラッシュ)
