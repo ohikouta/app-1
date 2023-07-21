@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -44,13 +45,13 @@ class PostController extends Controller
 	| Post $post
 	|今回はユーザの入力データをDBのpostsテーブルにアクセスし保存する必要があるため、空のPostインスタンスを利用する
 	*/
-	public function store(Request $request, Post $post)
+	public function store(PostRequest $request, Post $post)
 	{
 		// $request['post']: postをキーにもつリクエストパラメータを取得することができる
 		// データ構造: $input=['title'->'タイトル', 'body'->'本文']
 		$input = $request['post'];
 		$post->fill($input)->save();
-		return redirect('posts/' . $post->id);
+		return redirect('/posts/' . $post->id);
 	}
 }
 
