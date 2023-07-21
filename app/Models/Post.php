@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
     
+    // クラス変数fillableを定義
+    protected $fillable = [
+        'title',
+        'body'
+        ];
     
     // 与えた引数のデータを更新日順に取得するメソッドを以下に作成
     public function getPaginateByLimit(int $limit_count = 5)

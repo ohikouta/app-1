@@ -10,6 +10,7 @@
     </head>
     <body class="antialiased">
         <h1>Blog Name</h1>
+        <a href="/posts/create">create</a>
         <div class='posts'>
             <!--　PHP繰り返し処理を用いてDBのデータを表示　-->
             @foreach($posts as $post)
