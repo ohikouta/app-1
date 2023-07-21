@@ -28,7 +28,7 @@ class PostController extends Controller
 	*/
 	public function show(Post $post)
 	{
-		return view('posts.show')->with(['post' => $post]);
+		return view('posts/show')->with(['post' => $post]);
 		// 'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス
 	}
 	
@@ -36,6 +36,21 @@ class PostController extends Controller
 	public function create()
 	{
 		return view('posts/create');
+	}
+	
+	/* Request $request
+	|ユーザからのリクエストに含まれるデータを扱う場合、Requestインスタンスを利用できる
+	|コントローラがデフォルトでuseしている[*Illuminate\Http\Request]を引数に記載することで利用する
+	| Post $post
+	|今回はユーザの入力データをDBのpostsテーブルにアクセスし保存する必要があるため、空のPostインスタンスを利用する
+	*/
+	public function store(Request $request, Post $post)
+	{
+		// $request['post']: postをキーにもつリクエストパラメータを取得することができる
+		// データ構造: $input=['title'->'タイトル', 'body'->'本文']
+		$input = $request['post'];
+		$post->fill($input)->save();
+		return redirect('posts/' . $post->id);
 	}
 }
 

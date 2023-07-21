@@ -34,6 +34,8 @@ Route::get('/posts/create', [PostController::class, 'create']);
 // '/posts/{対象のID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
+Route::post('/posts', [PostController::class, 'store']);
+
 /*
 |ちなみに！
 |アプリを起動して一番最初にブラウザから送られてくるリクエストが'/'(スラッシュ)
