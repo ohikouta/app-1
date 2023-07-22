@@ -65,5 +65,12 @@ class PostController extends Controller
 		$post->fill($input_post)->save();
 		return redirect('/posts/' . $post->id);
 	}
+	
+	public function delete(Post $post)
+	{
+		// このままだと物理削除になる、論理削除にしたい！->ユーザーの履歴を残す、復旧作業を楽にする
+		$post->delete();
+		return redirect('/');
+	}
 }
 

@@ -40,6 +40,8 @@ Route::post('/posts', [PostController::class, 'store']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 
 Route::put('posts/{post}', [PostController::class, 'update']);
+
+Route::delete('/posts/{post}', [PostController::class, 'delete']);
 /*
 |ちなみに！
 |アプリを起動して一番最初にブラウザから送られてくるリクエストが'/'(スラッシュ)
