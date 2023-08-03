@@ -14,12 +14,21 @@ class Post extends Model
     // クラス変数fillableを定義
     protected $fillable = [
         'title',
-        'body'
+        'body',
+        'category_id',
         ];
     
     public function getPaginateByLimit(int $limit_count = 5)
     {
         // Modelクラスのlimitメソッドを使用
-        return $this->orderby('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category')->orderby('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    // Categoryに対するリレーション
+    
+    // 「1対多」の関係なので単数系に
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

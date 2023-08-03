@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,4 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('posts/{post}', [PostController::class, 'update']);
 
 Route::delete('/posts/{post}', [PostController::class, 'delete']);
-/*
-|ちなみに！
-|アプリを起動して一番最初にブラウザから送られてくるリクエストが'/'(スラッシュ)
-|だからトップページを表示するときの引数に'/'を指定することは言わずもがな
-*/
+Route::get('/categories/{category}', [CategoryController::class, 'index']);
